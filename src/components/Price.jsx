@@ -1,8 +1,8 @@
-const Price = () => {
+const Price = ({ money, checked }) => {
   return (
     <div className="price">
-      <strong>$16.00</strong>
-      <p>/ month</p>
+      <strong>${money}</strong>
+      <p>/ {checked ? "year" : "month"}</p>
     </div>
   );
 };
