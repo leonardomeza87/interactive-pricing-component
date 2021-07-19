@@ -396,7 +396,7 @@ button:hover {
   }
 
   .billing p {
-    width: 5.5rem;
+    width: max-content;
   }
 
   .billing p:first-child {
