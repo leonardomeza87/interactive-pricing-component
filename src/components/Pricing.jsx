@@ -8,25 +8,36 @@ const Pricing = () => {
   const [money, setMoney] = useState((16).toFixed(2));
   const [discount, setDiscount] = useState(0);
   const [checked, setChecked] = useState(false);
-  const [sliderValue, setSliderValue] = useState(50);
+  const [sliderValue, setSliderValue] = useState(2);
 
   //Set amount of money
   const handleChange = (e) => {
-    let value = e.target.valueAsNumber;
+    const el = e.target;
+    console.log(el.value);
+
+    el.style.setProperty("--value", el.value);
+
+    let value = el.valueAsNumber;
     setSliderValue(value);
 
     calculateMoney(value);
   };
 
+  const priceList = [8, 12, 16, 24, 36];
+
   const calculateMoney = (value) => {
+    let ppm = priceList[value];
+    // console.log(ppm);
+
     if (discount !== 0) {
-      let dvalue = value * (discount / 100);
-      value = (value - dvalue) * 12;
+      let months = 12;
+      let dvalue = ppm * (discount / 100);
+      ppm = (ppm - dvalue) * months;
     }
 
     // console.log("Discounted value: ", value);
 
-    setMoney(((value / 100) * 32).toFixed(2));
+    setMoney(ppm.toFixed(2));
   };
 
   useEffect(() => {
@@ -42,13 +53,16 @@ const Pricing = () => {
     <div className="pricing">
       <div className="primary">
         <div className="top">
-          <Pageviews />
+          <Pageviews sliderValue={sliderValue} />
           <Price money={money} checked={checked} />
         </div>
         <input
           className="slider"
-          step="10"
+          min="0"
+          max="4"
+          step="1"
           type="range"
+          style={{ "--value": 2, "--min": 0, "--max": 4 }}
           onChange={handleChange}
         />
         <Billing handleCheck={setChecked} />

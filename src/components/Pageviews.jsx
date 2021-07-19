@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-const Pageviews = () => {
-  const [views, setViews] = useState(0);
+const Pageviews = ({ sliderValue }) => {
+  const [views, setViews] = useState("100k");
 
   useEffect(() => {
-    setTimeout(() => {
-      const timer = setInterval(() => {
-        setViews((views) => {
-          if (views < 100) {
-            return views + 4;
-          } else {
-            clearInterval(timer);
-            return 100;
-          }
-        });
-      }, 20);
-    }, 1000);
-  }, []);
+    const viewsList = ["10k", "50k", "100k", "500k", "1M"];
+
+    setViews(viewsList[sliderValue]);
+  }, [sliderValue]);
 
   return (
     <div className="pageviews">
-      <p>{views}k Pageviews</p>
+      <p>{views} Pageviews</p>
     </div>
   );
 };

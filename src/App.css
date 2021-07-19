@@ -147,6 +147,8 @@ h1 {
   height: 2.5rem;
   border: none;
   border-radius: 50%;
+  position: relative;
+  top: -1rem;
   background: var(--strong-cyan) url(./images/icon-slider.svg) no-repeat center;
   cursor: grab;
   box-shadow: 0 1rem 1rem 0 var(--soft-cyan);
@@ -159,6 +161,28 @@ h1 {
   background-color: var(--thumb-grab);
   cursor: grabbing;
 }
+
+/*  Chrome track */
+
+input[type="range"] {
+  --range: calc(var(--max) - var(--min));
+  --ratio: calc((var(--value) - var(--min)) / var(--range));
+  --sx: calc(0.5 * 10px + var(--ratio) * (100% - 10px));
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 0.5rem;
+  border-radius: 0.5em;
+  background: var(--very-light-grayish-blue);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--soft-cyan), var(--soft-cyan)) 0 / var(--sx)
+      100% no-repeat,
+    var(--very-light-grayish-blue);
+}
+
+/*  */
 
 .slider::-moz-range-progress {
   background-color: var(--soft-cyan);
