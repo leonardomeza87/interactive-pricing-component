@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Useful resources
 
-- [Progress bar in an input range](https://stackoverflow.com/questions/38095650/style-input-range-to-look-like-a-progress-bar) - The last answer helped me to make the program bar visible in Google Chrome.
+- [Progress bar in an input range](https://stackoverflow.com/questions/38095650/style-input-range-to-look-like-a-progress-bar) - The last answer helped me to make the progress bar visible in Google Chrome.
 
 ## Author
 
